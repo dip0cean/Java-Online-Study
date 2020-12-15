@@ -8,15 +8,15 @@ public class Day_01 {
         int result = num1 + num2;
         System.out.println("num1 + num2 = " + result);
 
-        // 클래스 생성자 정의
-        Test test = new Test();
+        // MemberVar 클래스 생성자 정의
+        MemberVar test = new MemberVar();
 
         // Setter 메소드를 이용해 Test 클래스의 num1 멤버 변수 초기화
         test.setNum(1);
         System.out.println("test.getNum() = " + test.getNum());
 
         // Test 클래스의 지역 변수(상수) talk을 return하는 method2 호출
-        System.out.println("test.method2() = " + test.method2());
+        System.out.println("test.method2() = " + test.talk);
 
         // Day_01 클래스의 num1 변수 초기화
         num1 = 0;
@@ -24,11 +24,19 @@ public class Day_01 {
         boolean check = test.method1(num1);
         System.out.println("test.method1(" + num1 + ") = " + check);
 
+        // MethodVar 클래스 생성자 정의
+        MethodVar test2 = new MethodVar();
 
+        // 지역 변수 테스트
+        int method1 = test2.method1();
+        // static 변수 메소드 내에서 초기화 후 테스트
+        int method2 = test2.method2();
+        System.out.println("test2.method1() = " + method1);
+        System.out.println("test2.method2() = " + method2);
     }
 
     // 클래스 선언
-    public static class Test {
+    public static class MemberVar {
         private int num;
         public boolean check;
         final private String talk = "hello world";
@@ -39,10 +47,6 @@ public class Day_01 {
             return check;
         }
 
-        public String method2() {
-            return talk;
-        }
-
         public int getNum() {
             return num;
         }
@@ -50,9 +54,23 @@ public class Day_01 {
         public void setNum(int num) {
             this.num = num;
         }
+    }
 
-        public String getTalk() {
-            return talk;
+    public static class MethodVar {
+        public int num1;
+
+        public int method1() {
+            int num1 = 10;
+            int num2 = 11;
+            return num1 + num2;
+        }
+
+        public int method2() {
+            num1 = 20; // 멤버 변수 초기화
+
+            // num1을 같은 이름의 새로운 변수로 선언하면 새로 선언된 변수의 데이터가 반환된다.
+//            int num1 = 10;
+            return num1;
         }
     }
 }
