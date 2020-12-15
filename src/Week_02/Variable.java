@@ -1,6 +1,6 @@
 package Week_02;
 
-public class Day_01 {
+public class Variable {
     public static void main(String[] args) {
         int num1 = 100;
         int num2 = 100;
